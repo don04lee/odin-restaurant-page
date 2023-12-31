@@ -2,7 +2,7 @@ function createHome() {
   
   let home = document.createElement("div");
   document.body.appendChild(home);
-  home.classList.add("home");
+  home.classList.add("main");
 
   let image = document.createElement("img");
   image.classList.add("homePart");
@@ -27,4 +27,11 @@ function createText(text) {
   return newText;
 }
 
-export default createHome;
+function loadHome() {
+
+  let main = document.getElementById("main");
+  main.textContent = "";
+  main.appendChild(createHome());
+}
+
+export default loadHome;

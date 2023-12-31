@@ -1,7 +1,7 @@
 import './style.css'; 
-import createHome from './home.js'
-import createMenu from './menu.js'
-import createContact from './contact.js'
+import loadHome from './home.js'
+import loadMenu from './menu.js'
+import loadContact from './contact.js'
 
 function createHeader() {
   
@@ -12,49 +12,72 @@ function createHeader() {
   let title = document.createElement("h1");
 
   let buttons = document.createElement('div');
-  let loadHome = document.createElement("h6");
-  let loadMenu = document.createElement("h6");
-  let loadContact = document.createElement("h6");
+  let home = document.createElement("h6");
+  let menu = document.createElement("h6");
+  let contact = document.createElement("h6");
 
   buttons.classList.add("buttons");
+  home.classList.add("loader");
+  menu.classList.add("loader");
+  contact.classList.add("loader");
 
   title.textContent = "Love, Seal";
-  loadHome.textContent = "Home";
-  loadMenu.textContent = "Menu";
-  loadContact.textContent = "Contact";
+  home.textContent = "Home";
+  menu.textContent = "Menu";
+  contact.textContent = "Contact";
 
   headerDiv.appendChild(title);
   headerDiv.appendChild(buttons);
-  buttons.appendChild(loadHome);
-  buttons.appendChild(loadMenu);
-  buttons.appendChild(loadContact);
+  buttons.appendChild(home);
+  buttons.appendChild(menu);
+  buttons.appendChild(contact);
 
-  goHome();
+  goMain();
+  loadHome();
+  setActive(home);
 
-  loadHome.addEventListener('click', function() {
-    console.log('yes');
-    goHome();
+  home.addEventListener('click', function() {
+    if(!home.classList.contains('active')) {
+      setActive(home);
+      loadHome();
+    }
   });
   
-  loadMenu.addEventListener('click', function() {
-    goMenu();
+  menu.addEventListener('click', function() {
+    if(!menu.classList.contains('active')) {
+      setActive(menu);
+      loadMenu();
+    }
   });
 
-  loadContact.addEventListener('click', function() {
-    goContact;
+  contact.addEventListener('click', function() {
+    if(!contact.classList.contains('active')) {
+      setActive(contact);
+      loadContact();
+    }
   });
 }
 
-function goHome(){ 
-  createHome();
+function setActive(button) {
+  let buttons = document.querySelectorAll('.loader');
+  
+  buttons.forEach((e => {
+    if(e !== button) {
+      e.classList.remove('active');
+    }
+  }))
+
+  button.classList.add('active');
 }
 
-function goMenu() {
-  createMenu();
-}
+function goMain() {
+  
+  let main = document.createElement("main");
+  main.classList.add("main");
+  document.body.appendChild(main);
+  main.setAttribute("id", "main");
 
-function goContact() {
-  createContact();
+  return main;
 }
 
 createHeader();

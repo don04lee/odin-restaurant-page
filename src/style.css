@@ -38,12 +38,12 @@ body {
   color: #0ea5e9;
 }
 
-.home {
+.main {
   background-color: #bae6fd;
   border-radius: 20px;
   margin-left: 5vw;
   margin-right: 5vw;
   display: grid;
   place-items: center;
-  grid-template-rows: 1fr 2fr 1fr;
+  text-align: center;
 }
