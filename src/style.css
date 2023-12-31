@@ -41,8 +41,10 @@ body {
 .main {
   background-color: #bae6fd;
   border-radius: 20px;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-left: 7vw;
+  margin-right: 7vw;
   display: grid;
   place-items: center;
   text-align: center;
